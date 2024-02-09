@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Package Status</h1>
+<a href="/new_package">Create New Packge</a>
+<br>
+<br>
+<div class="map-container"><img class="map" src="/static/images/map.jpg" alt="map">red color number = miles</div>
+<div class="packages">
+  {% for package in packages %}
+  <div class="package">
+    <div class="package-titles">
+      <div>Package #ID</div>
+      <div>Sender</div>
+      <div>Recipient</div>
+      <div>Origin</div>
+      <div>Destination</div>
+      <div class="orange">Current Location</div>
+      <div>Express</div>
+      <div>Shortest Path</div>
+    </div>
+    <div class="package-data">
+      <div>{{ package.id }}</div>
+      <div>{{ package.sender }}</div>
+      <div>{{ package.recipient }}</div>
+      <div>{{ package.origin }}</div>
+      <div>{{ package.destination }}</div>
+      <div class="red">{{ package.location }}</div>
+      <div>{{ "Yes" if package.has_express else "No" }}</div>
+      <div>{{ package.path }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
